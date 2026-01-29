@@ -1,15 +1,10 @@
 import json
-import requests
+import data_fetcher
 
-URL_REQUEST = "https://api.api-ninjas.com/v1/animals?name="
-API_KEY = "Bn6bsORJmnFmjtA7f4EWvZdHKKzSl8CgrqNcKebx"
+#URL_REQUEST = "https://api.api-ninjas.com/v1/animals?name="
+#API_KEY = "Bn6bsORJmnFmjtA7f4EWvZdHKKzSl8CgrqNcKebx"
 
 
-def fetch_animal_json(URL_REQUEST, animal):
-    """This function fetch the data via API"""
-    res = requests.get(f"{URL_REQUEST}{animal}", headers={"X-Api-Key":"Bn6bsORJmnFmjtA7f4EWvZdHKKzSl8CgrqNcKebx"})
-    res = res.json()
-    return res
 
 def load_data(file_path):
     """it loads a JSON file"""
@@ -40,8 +35,8 @@ def animals_cards(animals_data):
     return output
 
 def main():
-    animal = input("Enter a name of an animal: ")
-    animals_data = fetch_animal_json(URL_REQUEST, animal)
+    animal_name = input("Enter a name of an animal: ")
+    animals_data = data_fetcher.fetch_data(animal_name)
     html_code = load_html()
 
     if animals_data:
