@@ -1,15 +1,12 @@
 import json
 import data_fetcher
 
-#URL_REQUEST = "https://api.api-ninjas.com/v1/animals?name="
-#API_KEY = "Bn6bsORJmnFmjtA7f4EWvZdHKKzSl8CgrqNcKebx"
-
-
 
 def load_data(file_path):
     """it loads a JSON file"""
     with open(file_path, "r", encoding="utf-8") as handle:
         return json.load(handle)
+
 
 def load_html():
     """it loads a the HTML code from the template"""
@@ -34,6 +31,7 @@ def animals_cards(animals_data):
         output += '</ul>\n</div>\n</li>'
     return output
 
+
 def main():
     animal_name = input("Enter a name of an animal: ")
     animals_data = data_fetcher.fetch_data(animal_name)
@@ -49,8 +47,6 @@ def main():
         f.write(new_html_code)
 
     print("Website was successfully generated to the file animals.html.")
-
-
 
 
 if __name__ == '__main__':
