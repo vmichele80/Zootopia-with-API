@@ -1,4 +1,5 @@
 import json
+import requests
 
 def load_data(file_path):
     """it loads a JSON file"""
