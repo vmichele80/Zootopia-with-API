@@ -41,7 +41,7 @@ def main():
         animals_list = animals_cards(animals_data)
         new_html_code = html_code.replace("__REPLACE_ANIMALS_INFO__", animals_list)
     else:
-        new_html_code = html_code.replace("__REPLACE_ANIMALS_INFO__", f"<h2>The animal '{animal}' doesn't exist.</h2>")
+        new_html_code = html_code.replace("__REPLACE_ANIMALS_INFO__", f"<h2>The animal '{animal_name}' doesn't exist.</h2>")
 
     with open("animals.html", "w", encoding="utf-8") as f:  # Write the new html code to a file
         f.write(new_html_code)
