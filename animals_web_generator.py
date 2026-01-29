@@ -42,17 +42,21 @@ def animals_cards(animals_data):
 def main():
     animal = input("Enter a name of an animal: ")
     animals_data = fetch_animal_json(URL_REQUEST, animal)
+    html_code = load_html()
+
     if animals_data:
-        html_code = load_html()
         animals_list = animals_cards(animals_data)
         new_html_code = html_code.replace("__REPLACE_ANIMALS_INFO__", animals_list)
-
-        with open("animals.html", "w", encoding="utf-8") as f:  # Write the new html code to a file
-            f.write(new_html_code)
-
-        print("Website was successfully generated to the file animals.html.")
     else:
-        print(f"The animal {animal} does not exist.")
+        new_html_code = html_code.replace("__REPLACE_ANIMALS_INFO__", f"<h2>The animal '{animal}' doesn't exist.</h2>")
+
+    with open("animals.html", "w", encoding="utf-8") as f:  # Write the new html code to a file
+        f.write(new_html_code)
+
+    print("Website was successfully generated to the file animals.html.")
+
+
+
 
 if __name__ == '__main__':
     main()
