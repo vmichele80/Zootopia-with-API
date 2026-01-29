@@ -3,14 +3,14 @@ import requests
 
 URL_REQUEST = "https://api.api-ninjas.com/v1/animals?name="
 API_KEY = "Bn6bsORJmnFmjtA7f4EWvZdHKKzSl8CgrqNcKebx"
-ANIMAL = "FOX"
+ANIMAL = "Kang"
 URLS_REQUEST_COMPLETE = URL_REQUEST + ANIMAL
 
 def fetch_animal_json(URL_REQUEST):
     """This function fetch the data via API"""
     res = requests.get(URL_REQUEST, headers={"X-Api-Key":"Bn6bsORJmnFmjtA7f4EWvZdHKKzSl8CgrqNcKebx"})
     res = res.json()
-    print(res)
+    return res
 
 def load_data(file_path):
     """it loads a JSON file"""
@@ -41,14 +41,13 @@ def animals_cards(animals_data):
     return output
 
 def main():
-    fetch_animal_json(URLS_REQUEST_COMPLETE)
-    # animals_data = load_data('animals_data.json')
-    # html_code = load_html()
-    # animals_list = animals_cards(animals_data)
-    # new_html_code = html_code.replace("__REPLACE_ANIMALS_INFO__", animals_list)
+    animals_data = fetch_animal_json(URLS_REQUEST_COMPLETE)
+    html_code = load_html()
+    animals_list = animals_cards(animals_data)
+    new_html_code = html_code.replace("__REPLACE_ANIMALS_INFO__", animals_list)
 
-    # with open("animals.html", "w", encoding="utf-8") as f:  # Write the new html code to a file
-        #f.write(new_html_code)
+    with open("animals.html", "w", encoding="utf-8") as f:  # Write the new html code to a file
+        f.write(new_html_code)
 
 if __name__ == '__main__':
     main()
