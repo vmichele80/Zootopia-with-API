@@ -1,4 +1,4 @@
 json
-requests
 os
+requests
 dotenv
